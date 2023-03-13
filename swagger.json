@@ -1,0 +1,202 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Online and Prime API"
+    },
+    "host": "localhost:5000",
+    "basePath": "/",
+    "schemes": [
+        "http"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/online": {
+            "post": {
+                "summary": "List merchants online",
+                "parameters": [{
+                    "in": "body",
+                    "name": "body",
+                    "description": "Write date",
+                    "schema": {
+                        "type": "array",
+                        "required": [
+                            "date"
+                        ],
+                        "properties": {
+                            "date": {
+                                "type": "string",
+                                "format": "date",
+                                "example": "2023-01-10"
+                            }
+                        }
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/online"
+                        }
+                    }
+                }
+            }
+        },
+        "/prime": {
+            "post": {
+                "summary": "List cards with prime status",
+                "parameters": [{
+                    "in": "body",
+                    "name": "body",
+                    "description": "Write start and end dates",
+                    "schema": {
+                        "type": "array",
+                        "required": [
+                            "startDate",
+                            "endDate"
+                        ],
+                        "properties": {
+                            "startDate": {
+                                "type": "string",
+                                "format": "date",
+                                "example": "2023/01/10"
+                            },
+                            "endDate": {
+                                "type": "string",
+                                "format": "date",
+                                "example": "2023/01/11"
+                            }
+                        }
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/prime"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "online": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "SERNO": {
+                        "type": "int",
+                        "example": 10811833
+                    },
+                    "I003_PROC_CODE": {
+                        "type": "string",
+                        "example": "000000"
+                    },
+                    "SUBSTR(LTIMESTAMP,1,9)": {
+                        "type": "string",
+                        "example": "10-JAN-23"
+                    },
+                    "CAR_NUM": {
+                        "type": "string",
+                        "example": "4037**** ****3384"
+                    },
+                    "I004_AMT_TRXN": {
+                        "type": "int",
+                        "example": 8541555
+                    },
+
+                    "I039_RSP_CD": {
+                        "type": "string",
+                        "example": "78"
+                    },
+
+                    "I043C_MERCH_CNT": {
+                        "type": "string",
+                        "example": "UZ"
+                    },
+                    "I043A_MERCH_NAME": {
+                        "type": "string",
+                        "example": "OOO IDEA CONCEPT GROUP"
+                    },
+
+                    "I018_MERCH_TYPE": {
+                        "type": "string",
+                        "example": "5999"
+                    },
+
+                    "I032_ACQUIRER_ID": {
+                        "type": "string",
+                        "example": "124678"
+                    },
+                    "I042_MERCH_ID": {
+                        "type": "string",
+                        "example": "010880505734601"
+                    },
+                    "I041_POS_ID": {
+                        "type": "string",
+                        "example": "10119BBE"
+                    }
+                }
+            }
+        },
+        "prime": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "CAR_NUM": {
+                        "type": "string",
+                        "example": "1234********4678"
+                    },
+                    "I004_AMT_TRXN": {
+                        "type": "int",
+                        "example": 854787
+                    },
+                    "I013_TRXN_DATE": {
+                        "type": "string",
+                        "example": "2023-03-02T19:00:00.000Z"
+                    },
+                    "I007_LOAD_DATE": {
+                        "type": "string",
+                        "example": "2023-03-02T19:00:00.000Z"
+                    },
+                    "ORIG_MSG_TYPE": {
+                        "type": "string",
+                        "example": "05"
+                    },
+                    "I043A_MERCH_NAME": {
+                        "type": "string",
+                        "example": "OOO STROY DVOR "
+                    },
+                    "I032_ACQUIRER_ID": {
+                        "type": "string",
+                        "example": "464176"
+                    },
+                    "I042_MERCH_ID": {
+                        "type": "string",
+                        "example": "105741320"
+                    },
+                    "I041_POS_ID": {
+                        "type": "string",
+                        "example": "42054"
+                    },
+                    "I038_AUTH_ID": {
+                        "type": "string",
+                        "example": "096192"
+                    },
+                    "I062V2_TRANS_ID": {
+                        "type": "string",
+                        "example": "463062169052968"
+                    }
+                }
+            }
+        }
+    }
+}
